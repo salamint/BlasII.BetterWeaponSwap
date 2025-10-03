@@ -1,4 +1,4 @@
-using BlasII.Framework.WeaponEvents.Handlers;
+using BlasII.Framework.WeaponEvents.Events;
 using Il2CppTGK.Game.Components.Attack.Data;
 using System.Collections.Generic;
 
@@ -11,6 +11,13 @@ public class RapierTrueSkillSaverHandler : RapierHandler
 	/// <summary>
 	/// </summary>
 	private static readonly List<AttackInfo> Attacks = [];
+
+	/// <summary>
+	/// </summary>
+	public static void Reset()
+	{
+		Attacks.Clear();
+	}
 
 	/// <summary>
 	/// </summary>
@@ -36,7 +43,7 @@ public class RapierTrueSkillSaverHandler : RapierHandler
 	/// </summary>
 	protected override void OnHitReceived(AttackInfo hit)
 	{
-		Attacks.Clear();
+		Reset();
 	}
 }
 

@@ -1,4 +1,4 @@
-using BlasII.Framework.WeaponEvents.Handlers;
+using BlasII.Framework.WeaponEvents.Events;
 
 namespace BlasII.BetterWeaponSwap;
 
@@ -9,6 +9,13 @@ public class BladeBerserkModeSaver : BladeHandler
 	/// <summary>
 	/// </summary>
 	private static int BerserkModeValueSaved = 0;
+
+	/// <summary>
+	/// </summary>
+	public static void Reset()
+	{
+		BerserkModeValueSaved = 0;
+	}
 
     /// <summary>
     /// </summary>

@@ -1,4 +1,4 @@
-using BlasII.Framework.WeaponEvents.Handlers;
+using BlasII.Framework.WeaponEvents.Events;
 
 namespace BlasII.BetterWeaponSwap;
 
@@ -21,6 +21,13 @@ public class CenserIgnitionSaverHandler : CenserHandler
 	/// </code>
     /// </summary>
 	private static bool IsIgnitedSavedState = false;
+
+	/// <summary>
+	/// </summary>
+	public static void Reset()
+	{
+		IsIgnitedSavedState = false;
+	}
 
     /// <summary>
 	/// When Veredicto is equipped again, if it was in the ignited state before,
