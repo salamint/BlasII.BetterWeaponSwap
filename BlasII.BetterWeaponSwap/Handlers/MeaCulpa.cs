@@ -19,14 +19,14 @@ public class MeaCulpaBerserkModeSaver : MeaCulpaHandler
 
     /// <summary>
     /// </summary>
-	protected override void OnEquip()
+	public override void OnEquip()
 	{
 		CurrentBerserkModeValue = BerserkModeValueSaved;
 	}
 
     /// <summary>
     /// </summary>
-	protected override void OnUnequip()
+	public override void OnUnequip()
 	{
 		BerserkModeValueSaved = CurrentBerserkModeValue;
 	}

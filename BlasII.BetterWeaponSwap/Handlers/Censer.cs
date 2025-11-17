@@ -33,7 +33,7 @@ public class CenserIgnitionSaverHandler : CenserHandler
 	/// When Veredicto is equipped again, if it was in the ignited state before,
 	/// this will reignite it. Otherwise, nothing will happen.
     /// </summary>
-    protected override void OnEquip()
+    public override void OnEquip()
     {
 		if (IsIgnitedSavedState && Igniter != null)
 		{
@@ -47,7 +47,7 @@ public class CenserIgnitionSaverHandler : CenserHandler
     /// <summary>
 	/// When Veredicto is unequipped, its current state is saved.
     /// </summary>
-    protected override void OnUnequip()
+    public override void OnUnequip()
     {
 		IsIgnitedSavedState = IsIgnited;
 	}

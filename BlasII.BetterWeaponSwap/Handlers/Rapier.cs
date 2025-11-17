@@ -21,7 +21,7 @@ public class RapierTrueSkillSaverHandler : RapierHandler
 
 	/// <summary>
 	/// </summary>
-	protected override void OnEquip()
+	public override void OnEquip()
 	{
 		if (TrueSkillFiller != null)
 		{
@@ -34,14 +34,14 @@ public class RapierTrueSkillSaverHandler : RapierHandler
 
 	/// <summary>
 	/// </summary>
-	protected override void OnAttackHit(AttackInfo attack)
+	public override void OnAttackHit(AttackInfo attack)
 	{
 		Attacks.Add(attack);
 	}
 
 	/// <summary>
 	/// </summary>
-	protected override void OnHitReceived(AttackInfo hit)
+	public override void OnHitReceived(AttackInfo hit)
 	{
 		Reset();
 	}

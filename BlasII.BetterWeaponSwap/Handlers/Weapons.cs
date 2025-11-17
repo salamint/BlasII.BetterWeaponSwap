@@ -8,7 +8,7 @@ public class WeaponReseter : WeaponHandler
 {
 	/// <summary>
 	/// </summary>
-	protected override void OnRestAtPrieDieu()
+	public override void OnRestAtPrieDieu()
 	{
 		CenserIgnitionSaverHandler.Reset();
 		RapierTrueSkillSaverHandler.Reset();
