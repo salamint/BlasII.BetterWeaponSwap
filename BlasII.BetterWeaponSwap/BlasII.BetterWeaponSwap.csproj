@@ -24,6 +24,10 @@
     <PackageReference Include="BlasII.ModdingAPI" Version="2.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\BlasII.Framework.WeaponEvents\BlasII.Framework.WeaponEvents\BlasII.Framework.WeaponEvents.csproj" />
+  </ItemGroup>
+
   <Target Name="Development" AfterTargets="PostBuildEvent">
 
     <!-- Get plugin & resources -->
