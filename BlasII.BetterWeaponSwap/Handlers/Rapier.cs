@@ -1,33 +1,42 @@
 using BlasII.Framework.WeaponEvents.Handlers;
-using Il2CppTGK.Game.Components.Attack;
 using Il2CppTGK.Game.Components.Attack.Data;
+using System.Collections.Generic;
 
 namespace BlasII.BetterWeaponSwap;
 
+/// <summary>
+/// </summary>
 public class RapierTrueSkillSaverHandler : RapierHandler
 {
 	/// <summary>
 	/// </summary>
-	protected override void OnEquip(RapierTrueSkillFiller filler)
+	private static readonly List<AttackInfo> Attacks = [];
+
+	/// <summary>
+	/// </summary>
+	protected override void OnEquip()
 	{
-		foreach (var attack in Main.BetterWeaponSwap.RapierAttacks)
+		if (TrueSkillFiller != null)
 		{
-			Main.BetterWeaponSwap.ApplyBonus(filler, attack);
+			foreach (var attack in Attacks)
+			{
+				Main.BetterWeaponSwap.ApplyBonus(TrueSkillFiller, attack);
+			}
 		}
 	}
 
 	/// <summary>
 	/// </summary>
-	protected override void OnAttack(AttackInfo attack, bool isHit)
+	protected override void OnAttackHit(AttackInfo attack)
 	{
-		Main.BetterWeaponSwap.RapierAttacks.Add(attack);
+		Attacks.Add(attack);
 	}
 
 	/// <summary>
 	/// </summary>
 	protected override void OnHitReceived(AttackInfo hit)
 	{
-		Main.BetterWeaponSwap.RapierAttacks.Clear();
+		Attacks.Clear();
 	}
 }
 

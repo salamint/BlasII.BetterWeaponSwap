@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using BlasII.ModdingAPI;
+﻿using BlasII.ModdingAPI;
 using Il2CppTGK.Game.Components.Attack;
 using Il2CppTGK.Game.Components.Attack.Data;
 
@@ -7,8 +6,6 @@ namespace BlasII.BetterWeaponSwap;
 
 public class BetterWeaponSwap : BlasIIMod
 {
-	internal readonly List<AttackInfo> RapierAttacks = [];
-
     internal BetterWeaponSwap() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
 	/// <summary>
