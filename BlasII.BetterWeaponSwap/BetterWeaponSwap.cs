@@ -4,8 +4,12 @@ using Il2CppTGK.Game.Components.Attack.Data;
 
 namespace BlasII.BetterWeaponSwap;
 
+/// <summary>
+/// </summary>
 public class BetterWeaponSwap : BlasIIMod
 {
+	/// <summary>
+	/// </summary>
     internal BetterWeaponSwap() : base(ModInfo.MOD_ID, ModInfo.MOD_NAME, ModInfo.MOD_AUTHOR, ModInfo.MOD_VERSION) { }
 
 	/// <summary>
@@ -38,6 +42,8 @@ public class BetterWeaponSwap : BlasIIMod
 		filler.consumptionCooldown = filler.consumptionLapseInSeconds;
 	}
 
+	/// <summary>
+	/// </summary>
     protected override void OnInitialize()
     {
         // Perform initialization here
