@@ -23,6 +23,7 @@ public class CenserIgnitionSaverHandler : CenserHandler
 	private static bool IsIgnitedSavedState = false;
 
 	/// <summary>
+	/// Resets the ignited state to false (extinguished).
 	/// </summary>
 	public static void Reset()
 	{
