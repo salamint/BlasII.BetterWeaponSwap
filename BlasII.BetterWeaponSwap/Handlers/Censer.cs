@@ -1,55 +1,48 @@
 using BlasII.Framework.WeaponEvents.Handlers;
-using BlasII.ModdingAPI;
 
 namespace BlasII.BetterWeaponSwap;
 
+
 /// <summary>
+/// Handler for Veredicto, keeps Veredicto in the state it was before swapping
+/// weapons.
+/// If Veredicto was ignited, it will ignite it again when equipping it.
+/// If Veredicto was not ignited, nothing will happen.
+/// This keeps Veredicto ignited even when resting at a Prie Dieu.
 /// </summary>
 public class CenserIgnitionSaverHandler : CenserHandler
 {
     /// <summary>
-    /// </summary>
-	private static bool IsIgnited = false;
-
-    /// <summary>
+	/// Boolean variable that saves the state in which Veredicto was before
+	/// changing weapon.
+	/// <code>
+	/// true = ignited
+	/// false = extinguished
+	/// </code>
     /// </summary>
 	private static bool IsIgnitedSavedState = false;
 
     /// <summary>
+	/// When Veredicto is equipped again, if it was in the ignited state before,
+	/// this will reignite it. Otherwise, nothing will happen.
     /// </summary>
     protected override void OnEquip()
     {
-		if (IsIgnitedSavedState)
+		if (IsIgnitedSavedState && Igniter != null)
 		{
-			if (Igniter != null)
-			{
-				Igniter.IgniteCenser();
-				Igniter.EnableIgnitionEffects();
-				Igniter.Ignited = true;
-				UIWeaponController.OnIgnitionStateChanged(true);
-			}
+			Igniter.IgniteCenser();
+			Igniter.EnableIgnitionEffects();
+			Igniter.Ignited = true;
+			UIWeaponController.OnIgnitionStateChanged(true);
 		}
     }
 
     /// <summary>
+	/// When Veredicto is unequipped, its current state is saved.
     /// </summary>
     protected override void OnUnequip()
     {
 		IsIgnitedSavedState = IsIgnited;
 	}
-
-	/// <summary>
-	/// </summary>
-    protected override void OnIgnited()
-    {
-		IsIgnited = true;
-    }
-
-    /// <summary>
-    /// </summary>
-    protected override void OnExtinguished()
-    {
-		IsIgnited = false;
-    }
 }
 
