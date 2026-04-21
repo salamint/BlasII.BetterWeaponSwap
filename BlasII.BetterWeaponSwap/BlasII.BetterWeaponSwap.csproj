@@ -9,8 +9,8 @@
     <Authors>salamint</Authors>
     <Company>salamint</Company>
     <Description>A mod for Blasphemous 2</Description>
-    <Version>0.1.0</Version>
-    
+    <Version>0.2.0</Version>
+
     <TargetName>BetterWeaponSwap</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
@@ -69,5 +69,5 @@
     <WriteLinesToFile Lines="$(GeneratedText)" File="$(GeneratedFilePath)" WriteOnlyWhenDifferent="true" Overwrite="true" />
 
   </Target>
-  
+
 </Project>
