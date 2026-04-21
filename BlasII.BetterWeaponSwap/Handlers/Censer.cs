@@ -1,6 +1,6 @@
 using BlasII.Framework.WeaponEvents.Events;
 
-namespace BlasII.BetterWeaponSwap;
+namespace BlasII.BetterWeaponSwap.Handlers;
 
 
 /// <summary>

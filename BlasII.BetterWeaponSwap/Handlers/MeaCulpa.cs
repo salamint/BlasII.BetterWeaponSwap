@@ -1,6 +1,6 @@
 using BlasII.Framework.WeaponEvents.Events;
 
-namespace BlasII.BetterWeaponSwap;
+namespace BlasII.BetterWeaponSwap.Handlers;
 
 /// <summary>
 /// Handles events from the Mea Culpa.
@@ -13,15 +13,7 @@ public class MeaCulpaBerserkModeSaver : MeaCulpaHandler
 	/// Attribute that saves the current berserk mode value to be restored
 	/// when switching back to Mea Culpa.
 	/// </summary>
-	private static int BerserkModeValueSaved = 0;
-
-	/// <summary>
-	/// Resets the berserk mode value to 0.
-	/// </summary>
-	public static void Reset()
-	{
-		BerserkModeValueSaved = 0;
-	}
+	public static StatSaver BerserkMode = new ("MCBerserkMode");
 
     /// <summary>
 	/// Saves the current berserk mode value when swapping from Mea Culpa to
@@ -29,7 +21,7 @@ public class MeaCulpaBerserkModeSaver : MeaCulpaHandler
     /// </summary>
 	public override void OnEquip()
 	{
-		CurrentBerserkModeValue = BerserkModeValueSaved;
+		BerserkMode.Restore();
 	}
 
     /// <summary>
@@ -38,6 +30,6 @@ public class MeaCulpaBerserkModeSaver : MeaCulpaHandler
     /// </summary>
 	public override void OnUnequip()
 	{
-		BerserkModeValueSaved = CurrentBerserkModeValue;
+		BerserkMode.Save();
 	}
 }

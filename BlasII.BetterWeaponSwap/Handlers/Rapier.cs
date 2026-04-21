@@ -1,8 +1,6 @@
 using BlasII.Framework.WeaponEvents.Events;
-using Il2CppTGK.Game.Components.Attack.Data;
-using System.Collections.Generic;
 
-namespace BlasII.BetterWeaponSwap;
+namespace BlasII.BetterWeaponSwap.Handlers;
 
 /// <summary>
 /// Handles the events from Sarmiento y Centella.
@@ -12,18 +10,9 @@ namespace BlasII.BetterWeaponSwap;
 public class RapierTrueSkillSaverHandler : RapierHandler
 {
 	/// <summary>
-	/// Attribute that stores the list of attacks that filled Sarmiento y
-	/// Centella's indicators (most attacks that hits an enemy).
+	/// Saves the value of the true skill state to be restored on demand.
 	/// </summary>
-	private static readonly List<AttackInfo> Attacks = [];
-
-	/// <summary>
-	/// Empties the list of attacks that filled the indicators.
-	/// </summary>
-	public static void Reset()
-	{
-		Attacks.Clear();
-	}
+	public static StatSaver TrueSkill = new ("TrueSkill");
 
 	/// <summary>
 	/// Restores the state of Sarmiento y Centella's indicators by reapplying
@@ -31,31 +20,16 @@ public class RapierTrueSkillSaverHandler : RapierHandler
 	/// </summary>
 	public override void OnEquip()
 	{
-		if (TrueSkillFiller != null)
-		{
-			foreach (var attack in Attacks)
-			{
-				Main.BetterWeaponSwap.ApplyBonus(TrueSkillFiller, attack);
-			}
-		}
+		TrueSkill.Restore();
 	}
 
-	/// <summary>
-	/// Saves the attacks that have hit an enemy and adds them to the list of
-	/// attacks that provided a bonus.
-	/// </summary>
-	public override void OnAttackHit(AttackInfo attack)
+    /// <summary>
+	/// Restores the saved berserk mode value when swapping from another weapon
+	/// back to Mea Culpa.
+    /// </summary>
+	public override void OnUnequip()
 	{
-		Attacks.Add(attack);
-	}
-
-	/// <summary>
-	/// When the player receives a hit, this empties the list of attacks that
-	/// charged the indicators.
-	/// </summary>
-	public override void OnHitReceived(AttackInfo hit)
-	{
-		Reset();
+		TrueSkill.Save();
 	}
 }
 

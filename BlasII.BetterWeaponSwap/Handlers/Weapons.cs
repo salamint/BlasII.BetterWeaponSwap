@@ -1,9 +1,9 @@
 using BlasII.Framework.WeaponEvents.Events;
 
-namespace BlasII.BetterWeaponSwap;
+namespace BlasII.BetterWeaponSwap.Handlers;
 
 /// <summary>
-/// The handleer's role is to reset every saved weapon state when the player
+/// The handler's role is to reset every saved weapon state when the player
 /// rests at a Prie Dieu.
 /// </summary>
 public class WeaponReseter : WeaponHandler
@@ -15,8 +15,8 @@ public class WeaponReseter : WeaponHandler
 	public override void OnRestAtPrieDieu()
 	{
 		CenserIgnitionSaverHandler.Reset();
-		RapierTrueSkillSaverHandler.Reset();
-		BladeBerserkModeSaver.Reset();
-		MeaCulpaBerserkModeSaver.Reset();
+		RapierTrueSkillSaverHandler.TrueSkill.Reset();
+		BladeBerserkModeSaver.BerserkMode.Reset();
+		MeaCulpaBerserkModeSaver.BerserkMode.Reset();
 	}
 }

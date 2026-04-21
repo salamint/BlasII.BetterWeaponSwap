@@ -1,6 +1,6 @@
 using BlasII.Framework.WeaponEvents.Events;
 
-namespace BlasII.BetterWeaponSwap;
+namespace BlasII.BetterWeaponSwap.Handlers;
 
 /// <summary>
 /// Handles events from Ruego al Alba.
@@ -13,15 +13,7 @@ public class BladeBerserkModeSaver : BladeHandler
 	/// Attribute that saves the current berserk mode value to be restored
 	/// when switching back to Ruego al Alba.
 	/// </summary>
-	private static int BerserkModeValueSaved = 0;
-
-	/// <summary>
-	/// Resets the berserk mode value to 0.
-	/// </summary>
-	public static void Reset()
-	{
-		BerserkModeValueSaved = 0;
-	}
+	public static StatSaver BerserkMode = new ("BerserkMode");
 
     /// <summary>
 	/// Saves the current berserk mode value when swapping from Ruego al Alba to
@@ -29,7 +21,7 @@ public class BladeBerserkModeSaver : BladeHandler
     /// </summary>
 	public override void OnEquip()
 	{
-		CurrentBerserkModeValue = BerserkModeValueSaved;
+		BerserkMode.Restore();
 	}
 
     /// <summary>
@@ -38,6 +30,6 @@ public class BladeBerserkModeSaver : BladeHandler
     /// </summary>
 	public override void OnUnequip()
 	{
-		BerserkModeValueSaved = CurrentBerserkModeValue;
+		BerserkMode.Save();
 	}
 }
