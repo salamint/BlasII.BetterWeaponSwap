@@ -12,7 +12,7 @@ public class RapierTrueSkillSaverHandler : RapierHandler
 	/// <summary>
 	/// Saves the value of the true skill state to be restored on demand.
 	/// </summary>
-	public static StatSaver TrueSkill = new ("TrueSkill");
+	public static StatSaver TrueSkillSaver { get; } = new (TrueSkill);
 
 	/// <summary>
 	/// Restores the state of Sarmiento y Centella's indicators by reapplying
@@ -20,7 +20,7 @@ public class RapierTrueSkillSaverHandler : RapierHandler
 	/// </summary>
 	public override void OnEquip()
 	{
-		TrueSkill.Restore();
+		TrueSkillSaver.Restore();
 	}
 
     /// <summary>
@@ -29,7 +29,7 @@ public class RapierTrueSkillSaverHandler : RapierHandler
     /// </summary>
 	public override void OnUnequip()
 	{
-		TrueSkill.Save();
+		TrueSkillSaver.Save();
 	}
 }
 
