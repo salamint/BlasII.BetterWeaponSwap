@@ -9,7 +9,7 @@
     <Authors>salamint</Authors>
     <Company>salamint</Company>
     <Description>Improves weapon swapping by saving and restoring the state of the weapons.</Description>
-    <Version>0.4.1</Version>
+    <Version>0.4.2</Version>
 
     <TargetName>BetterWeaponSwap</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
