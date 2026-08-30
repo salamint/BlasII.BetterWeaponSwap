@@ -1,12 +1,13 @@
-# Original author: Damocles
-# Edited by: salamint
-# Taken from https://github.com/BrandenEK/Blasphemous.ModdingAPI/blob/main/.github/workflows/build.yml
 
+# Blasphemous mod publisher v1.0.0
 name: Build
 
 on:
   push:
     tags: [ "**" ]
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -14,12 +15,12 @@ jobs:
 
     steps:
     - name: Checkout Repository
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: 3.1.x
+        dotnet-version: 8.0.x
 
     - name: Build Project
       run: |
@@ -42,7 +43,8 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: ${{ github.ref }}
-        release_name: ${{ env.MOD_TITLE }} v${{ github.ref_name }}
+        release_name: ${{ env.MOD_TITLE }} v${{ env.MOD_VERSION }}
+        draft: true
 
     - name: Upload Release
       uses: actions/upload-release-asset@v1
@@ -53,3 +55,6 @@ jobs:
         asset_path: publish/${{ env.MOD_NAME }}.zip
         asset_name: ${{ env.MOD_NAME }}.zip
         asset_content_type: application/zip
+
+    - name: Upload Nuget
+      run: dotnet nuget push **\*.nupkg -k ${{ secrets.NUGET_API_KEY }} -s https://api.nuget.org/v3/index.json
