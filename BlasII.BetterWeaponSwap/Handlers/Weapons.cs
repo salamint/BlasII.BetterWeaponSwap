@@ -18,5 +18,6 @@ public class WeaponReseter : WeaponHandler
 		RapierTrueSkillSaverHandler.TrueSkillSaver.Reset();
 		BladeBerserkModeSaver.BerserkModeSaver.Reset();
 		MeaCulpaBerserkModeSaver.BerserkModeSaver.Reset();
+		WhipCoreIgnitionModeSaver.CoreIgnitionModeSaver.Reset();
 	}
 }
