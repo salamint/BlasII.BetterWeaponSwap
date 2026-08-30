@@ -15,8 +15,8 @@ public class WeaponReseter : WeaponHandler
 	public override void OnRestAtPrieDieu()
 	{
 		CenserIgnitionSaverHandler.Reset();
-		RapierTrueSkillSaverHandler.TrueSkill.Reset();
-		BladeBerserkModeSaver.BerserkMode.Reset();
-		MeaCulpaBerserkModeSaver.BerserkMode.Reset();
+		RapierTrueSkillSaverHandler.TrueSkillSaver.Reset();
+		BladeBerserkModeSaver.BerserkModeSaver.Reset();
+		MeaCulpaBerserkModeSaver.BerserkModeSaver.Reset();
 	}
 }
