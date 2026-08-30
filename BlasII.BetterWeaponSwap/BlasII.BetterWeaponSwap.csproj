@@ -18,9 +18,15 @@
 	<RepositoryUrl>https://github.com/salamint/BlasII.BetterWeaponSwap</RepositoryUrl>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<Nullable>enable</Nullable>
+
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="../LICENSE" Pack="true" PackagePath="" />
+    <None Include="../README.md" Pack="true" PackagePath="" />
+
     <PackageReference Include="BlasII.Framework.WeaponEvents" Version="0.3.3" />
     <PackageReference Include="BlasII.GameLibs" Version="3.0.0" />
     <PackageReference Include="BlasII.ModdingAPI" Version="2.1.0" />
