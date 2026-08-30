@@ -7,6 +7,8 @@ attacks, by removing the restrictions that are set on the weapons, which are:
   weapon.
 - Sarmiento y Centella's indicators being reset after swapping to another
   weapon.
+- Embrujo's Wail of the Flame gauge and state (active/inactive) after swapping
+  back.
 
 Removing those restrictions should incite the player to switch weapons more
 often, and not lock them onto a certain weapon.

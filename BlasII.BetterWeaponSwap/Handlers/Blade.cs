@@ -13,7 +13,7 @@ public class BladeBerserkModeSaver : BladeHandler
 	/// Attribute that saves the current berserk mode value to be restored
 	/// when switching back to Ruego al Alba.
 	/// </summary>
-	public static StatSaver BerserkMode = new ("BerserkMode");
+	public static StatSaver BerserkModeSaver { get; } = new (BerserkMode);
 
     /// <summary>
 	/// Saves the current berserk mode value when swapping from Ruego al Alba to
@@ -21,7 +21,7 @@ public class BladeBerserkModeSaver : BladeHandler
     /// </summary>
 	public override void OnEquip()
 	{
-		BerserkMode.Restore();
+		BerserkModeSaver.Restore();
 	}
 
     /// <summary>
@@ -30,6 +30,6 @@ public class BladeBerserkModeSaver : BladeHandler
     /// </summary>
 	public override void OnUnequip()
 	{
-		BerserkMode.Save();
+		BerserkModeSaver.Save();
 	}
 }

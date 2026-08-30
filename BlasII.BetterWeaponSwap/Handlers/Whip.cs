@@ -2,16 +2,20 @@ using BlasII.Framework.WeaponEvents.Events;
 
 namespace BlasII.BetterWeaponSwap.Handlers;
 
-
 /// <summary>
-/// Handler for Veredicto, keeps Veredicto in the state it was before swapping
+/// Handler for Embrujo, keeps Embrujo in the state it was before swapping
 /// weapons.
-/// If Veredicto was ignited, it will ignite it again when equipping it.
-/// If Veredicto was not ignited, nothing will happen.
-/// This keeps Veredicto ignited even when resting at a Prie Dieu.
+/// If Embrujo was ignited, it will ignite it again when equipping it.
+/// If Embrujo was not ignited, nothing will happen.
+/// This keeps Embrujo ignited even when resting at a Prie Dieu.
 /// </summary>
-public class CenserIgnitionSaverHandler : CenserHandler
+public class WhipCoreIgnitionModeSaver : WhipHandler
 {
+	/// <summary>
+	/// Saves the value of the true skill state to be restored on demand.
+	/// </summary>
+	public static StatSaver CoreIgnitionModeSaver { get; } = new (CoreIgnitionMode);
+
     /// <summary>
 	/// Boolean variable that saves the state in which Veredicto was before
 	/// changing weapon.
@@ -28,6 +32,7 @@ public class CenserIgnitionSaverHandler : CenserHandler
 	public static void Reset()
 	{
 		IsIgnitedSavedState = false;
+		CoreIgnitionModeSaver.Reset();
 	}
 
     /// <summary>
@@ -36,11 +41,10 @@ public class CenserIgnitionSaverHandler : CenserHandler
     /// </summary>
     public override void OnEquip()
     {
-		if (IsIgnitedSavedState && Igniter != null)
+		CoreIgnitionModeSaver.Restore();
+		if (CoreIgnitionModeFiller != null && IsIgnitedSavedState)
 		{
-			Igniter.IgniteCenser();
-			Igniter.EnableIgnitionEffects();
-			Igniter.Ignited = true;
+			CoreIgnitionModeFiller.requestActivation = true;
 		}
     }
 
@@ -50,6 +54,7 @@ public class CenserIgnitionSaverHandler : CenserHandler
     public override void OnUnequip()
     {
 		IsIgnitedSavedState = IsIgnited;
+		CoreIgnitionModeSaver.Save();
 	}
 }
 

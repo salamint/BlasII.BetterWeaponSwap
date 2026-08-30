@@ -9,7 +9,7 @@
     <Authors>salamint</Authors>
     <Company>salamint</Company>
     <Description>A mod for Blasphemous 2</Description>
-    <Version>0.2.0</Version>
+    <Version>0.4.0</Version>
 
     <TargetName>BetterWeaponSwap</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -17,12 +17,13 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetName).xml</DocumentationFile>
     <RepositoryUrl>https://github.com/Example</RepositoryUrl>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	<Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlasII.Framework.WeaponEvents" Version="0.1.0" />
-    <PackageReference Include="BlasII.GameLibs" Version="2.2.0" />
-    <PackageReference Include="BlasII.ModdingAPI" Version="2.0.0" />
+    <PackageReference Include="BlasII.Framework.WeaponEvents" Version="0.3.2" />
+    <PackageReference Include="BlasII.GameLibs" Version="3.0.0" />
+    <PackageReference Include="BlasII.ModdingAPI" Version="2.1.0" />
   </ItemGroup>
 
   <Target Name="Development" AfterTargets="PostBuildEvent">

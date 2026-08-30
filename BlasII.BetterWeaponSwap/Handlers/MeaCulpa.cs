@@ -13,7 +13,7 @@ public class MeaCulpaBerserkModeSaver : MeaCulpaHandler
 	/// Attribute that saves the current berserk mode value to be restored
 	/// when switching back to Mea Culpa.
 	/// </summary>
-	public static StatSaver BerserkMode = new ("MCBerserkMode");
+	public static StatSaver BerserkModeSaver { get; } = new (BerserkMode);
 
     /// <summary>
 	/// Saves the current berserk mode value when swapping from Mea Culpa to
@@ -21,7 +21,7 @@ public class MeaCulpaBerserkModeSaver : MeaCulpaHandler
     /// </summary>
 	public override void OnEquip()
 	{
-		BerserkMode.Restore();
+		BerserkModeSaver.Restore();
 	}
 
     /// <summary>
@@ -30,6 +30,6 @@ public class MeaCulpaBerserkModeSaver : MeaCulpaHandler
     /// </summary>
 	public override void OnUnequip()
 	{
-		BerserkMode.Save();
+		BerserkModeSaver.Save();
 	}
 }
