@@ -21,7 +21,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="BlasII.Framework.WeaponEvents" Version="0.3.2" />
+    <PackageReference Include="BlasII.Framework.WeaponEvents" Version="0.3.3" />
     <PackageReference Include="BlasII.GameLibs" Version="3.0.0" />
     <PackageReference Include="BlasII.ModdingAPI" Version="2.1.0" />
   </ItemGroup>
