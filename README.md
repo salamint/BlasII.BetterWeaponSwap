@@ -16,6 +16,8 @@ This also allows some combos, like charging up Ruego al Alba's gauge, to then
 switch to Veredicto to attack another enemy, and finally switch back to Ruego al
 Alba to unleash the blood pact.
 
+Package on NuGet.org: [BlasII.BetterWeaponSwap](https://www.nuget.org/packages/BlasII.BetterWeaponSwap)
+
 ## Dependencies
 
 - [Weapon Events Framework](https://github.com/salamint/BlasII.Framework.WeaponEvents)
