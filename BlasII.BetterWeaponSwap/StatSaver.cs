@@ -1,6 +1,6 @@
 namespace BlasII.BetterWeaponSwap;
-using BlasII.ModdingAPI.Assets;
-using Il2CppTGK.Game.Components.StatsSystem.Data;
+
+using BlasII.Framework.WeaponEvents;
 
 /// <summary>
 /// Saves the value of a stat when asked to, and restores it later.
@@ -9,14 +9,9 @@ using Il2CppTGK.Game.Components.StatsSystem.Data;
 public class StatSaver
 {
 	/// <summary>
-	/// Name of the stat in the asset storage.
+	/// The stat proxy object used to edit the stat.
 	/// </summary>
-	public string StatName { get; private set; }
-
-	/// <summary>
-	/// Returns the stat ID corresponding to the stat name.
-	/// </summary>
-	public RangeStatID Stat { get => AssetStorage.RangeStats[StatName]; }
+	public RangeStatProxy StatProxy { get; init; }
 
 	/// <summary>
 	/// Default value to which the stored value is reset to.
@@ -26,14 +21,14 @@ public class StatSaver
 	/// <summary>
 	/// Currently saved value of the stat.
 	/// </summary>
-	public int StoredValue { get; private set; }
+	public int SavedValue { get; private set; }
 
 	/// <summary>
 	/// Initializes a new stat saver from a stat name and a default value.
 	/// </summary>
-    public StatSaver(string statName, int defaultValue = 0)
+    public StatSaver(RangeStatProxy statProxy, int defaultValue = 0)
 	{
-		StatName = statName;
+		StatProxy = statProxy;
 		DefaultValue = defaultValue;
 		Reset();
 	}
@@ -43,7 +38,7 @@ public class StatSaver
 	/// </summary>
 	public void Reset()
 	{
-		StoredValue = DefaultValue;
+		SavedValue = DefaultValue;
 	}
 
 	/// <summary>
@@ -51,7 +46,7 @@ public class StatSaver
 	/// </summary>
 	public void Restore()
 	{
-		AssetStorage.PlayerStats.SetCurrentValue(Stat, StoredValue);
+		StatProxy.Value = SavedValue;
 	}
 
 	/// <summary>
@@ -59,7 +54,7 @@ public class StatSaver
 	/// </summary>
 	public void Save()
 	{
-		StoredValue = AssetStorage.PlayerStats.GetCurrentValue(Stat);
+		SavedValue = StatProxy.Value;
 	}
 }
 
