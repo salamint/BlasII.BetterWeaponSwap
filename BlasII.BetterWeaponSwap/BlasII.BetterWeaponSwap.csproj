@@ -9,7 +9,7 @@
     <Authors>salamint</Authors>
     <Company>salamint</Company>
     <Description>A mod for Blasphemous 2</Description>
-    <Version>0.3.0</Version>
+    <Version>0.4.0</Version>
 
     <TargetName>BetterWeaponSwap</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
