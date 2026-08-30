@@ -8,14 +8,14 @@
     <Product>Better Weapon Swap</Product>
     <Authors>salamint</Authors>
     <Company>salamint</Company>
-    <Description>A mod for Blasphemous 2</Description>
+    <Description>Improves weapon swapping by saving and restoring the state of the weapons.</Description>
     <Version>0.4.0</Version>
 
     <TargetName>BetterWeaponSwap</TargetName>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
     <GenerateDocumentationFile>True</GenerateDocumentationFile>
     <DocumentationFile>bin\$(Configuration)\$(TargetName).xml</DocumentationFile>
-    <RepositoryUrl>https://github.com/Example</RepositoryUrl>
+	<RepositoryUrl>https://github.com/salamint/BlasII.BetterWeaponSwap</RepositoryUrl>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	<Nullable>enable</Nullable>
   </PropertyGroup>
