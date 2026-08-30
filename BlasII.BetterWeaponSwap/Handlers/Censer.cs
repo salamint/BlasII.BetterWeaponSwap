@@ -41,7 +41,6 @@ public class CenserIgnitionSaverHandler : CenserHandler
 			Igniter.IgniteCenser();
 			Igniter.EnableIgnitionEffects();
 			Igniter.Ignited = true;
-			UIWeaponController.OnIgnitionStateChanged(true);
 		}
     }
 
